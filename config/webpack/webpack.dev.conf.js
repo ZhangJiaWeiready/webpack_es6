@@ -4,6 +4,7 @@ const merge = require('webpack-merge');//webpack配置文件合并
 const path = require("path");
 const baseWebpackConfig = require("./webpack.base.conf");//基础配置
 const webpackFile = require("./webpack.file.conf");//一些路径配置
+const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
 let config = merge(baseWebpackConfig, {
     /*设置开发环境*/
@@ -13,6 +14,31 @@ let config = merge(baseWebpackConfig, {
         filename: 'js/[name].js',
         chunkFilename: "js/[name].js",
         publicPath: ''
+    },
+    optimization: {
+        // 包
+        runtimeChunk: {
+            name: 'manifest'
+        },
+        // 包拆分
+        splitChunks: {
+            cacheGroups: {
+                common: {   // 项目的公共组件
+                    chunks: "initial",
+                    name: "common",
+                    minChunks: 2,
+                    maxInitialRequests: 5,
+                    minSize: 0
+                },
+                vendor: {   // 第三方组件
+                    test: /node_modules/,
+                    chunks: "initial",
+                    name: "vendor",
+                    priority: 10,
+                    enforce: true
+                }
+            }
+        }
     },
     plugins: [
         /*设置热更新*/
@@ -24,6 +50,7 @@ let config = merge(baseWebpackConfig, {
                 test: /\.(js|jsx)$/,
                 use: [
                     'babel-loader',
+                    'cache-loader',
                 ],
                 include: [
                     path.resolve(__dirname, "../../app"),
@@ -41,6 +68,32 @@ let config = merge(baseWebpackConfig, {
             {
                 test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
                 loader: 'file-loader?name=[name].[ext]&outputPath=' + webpackFile.resource + '/'
+            },
+            {
+                test: /\.(js|jsx)$/,
+                enforce: 'pre',
+                use: [
+                    {
+                        options: {
+                            formatter: eslintFormatter,
+                            eslintPath: require.resolve('eslint'),
+                            // @remove-on-eject-begin
+                            baseConfig: {
+                                extends: [require.resolve('eslint-config-react-app')],
+                            },
+                            //ignore: false,
+                            useEslintrc: false,
+                            // @remove-on-eject-end
+                        },
+                        loader: require.resolve('eslint-loader'),
+                    },
+                ],
+                include: [
+                    path.resolve(__dirname, "../../app")
+                ],
+                exclude: [
+                    path.resolve(__dirname, "../../node_modules")
+                ],
             }
         ]
     },

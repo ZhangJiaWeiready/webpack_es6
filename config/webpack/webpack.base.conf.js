@@ -1,9 +1,12 @@
-let config = {
-    entry: {
-        'index':'./entryBuild/index.js'
-    },
-    resolve: {
-        extensions: [".js", ".json", ".jsx", ".css",".pcss"],
-    }
+const entry = require("./webpack.entry.conf");
+const newEntry = {};
+for (let name in entry) {
+    newEntry[name] = entry[name][0]
 }
-module.exports = config
+let config = {
+    entry: newEntry,
+    resolve: {
+        extensions: [".js", ".json", ".jsx", ".css", ".pcss"],
+    }
+};
+module.exports = config;
