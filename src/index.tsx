@@ -4,6 +4,6 @@ import * as ReactDOM from "react-dom"
 import { Ant } from "./components/Ant"
 
 ReactDOM.render(
-  <Ant name="EDong" company="ydj" />,
+  <Ant name="滕伟" company="onionMath" />,
   document.getElementById("app")
 )
