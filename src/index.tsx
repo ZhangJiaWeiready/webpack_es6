@@ -1,9 +1,13 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
+import Main  from "./components/Main"
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
 
-import { Ant } from "./components/Ant"
-
+const store = configureStore()
 ReactDOM.render(
-  <Ant name="滕伟" company="onionMath" />,
-  document.getElementById("app")
+  <Provider store={store}>
+    <Main />
+  </Provider>,
+  document.getElementById("app") as HTMLElement
 )
