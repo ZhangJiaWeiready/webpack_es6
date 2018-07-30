@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () =>
     <div className="bottom">
-        这是底部
+        Footer
     </div>
 ;
 
