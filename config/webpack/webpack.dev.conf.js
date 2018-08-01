@@ -16,7 +16,6 @@ let config = merge(baseWebpackConfig, {
         publicPath: ''
     },
     optimization: {
-        // 包
         runtimeChunk: {
             name: 'manifest'
         },

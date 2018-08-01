@@ -3,11 +3,8 @@ import '../../public/css/common.pcss';
 const Header = () =>
     <div className="top">
         <div>Header</div>
-        <div>
-            <i className="logo"/>
-        </div>
         <div className="nav">
-            <a href="/index.html">Index</a> <a href="/shop.html">Shop</a> <a href="/demo.html">Demo</a>
+            <a href="/index.html">首页</a> <a href="/demo.html">demo页面</a>
         </div>
     </div>
 ;

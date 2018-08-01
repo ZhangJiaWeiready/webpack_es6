@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --devtool eval --progress --colors --profile --config config/webpack/webpack.dev.conf.js",
     "entry": "node config/entry/entryBuild.js",
     "devBuildHtml": "node config/webpack/webpack.devBuildHtml.conf.js",
-    "createDev": "npm run entry && npm run devBuildHtml",
+    "create-dev": "npm run entry && npm run devBuildHtml",
     "build": "BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

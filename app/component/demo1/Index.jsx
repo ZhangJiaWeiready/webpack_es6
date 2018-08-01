@@ -1,11 +1,10 @@
 import React from 'react';
-import '../../public/css/shop.pcss';
 
 class Index extends React.Component {
     render() {
         return (
-            <div className="shop">
-                Shop
+            <div className="demo">
+                demo 2
             </div>
         );
     }
