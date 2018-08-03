@@ -11,7 +11,6 @@ export default function Main({name, LevelNum = 1, onIncrement, onDecrement }: Ap
     return (
         <div>
             <div>
-                <h1>Hello, I am { name }, I am work in onionMath now!</h1>
                 <h2>{ getExclamationMarks(LevelNum) }</h2>
             </div>
             <div>
@@ -24,5 +23,5 @@ export default function Main({name, LevelNum = 1, onIncrement, onDecrement }: Ap
 
 
 function getExclamationMarks(numChars: number) {
-    return Array(numChars + 1).join('!');
+    return Array(numChars + 1).join('1');
 }
